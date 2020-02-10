@@ -25,3 +25,40 @@ A view holder.
 The view holder extends the ViewHolder class. It contains the view information for displaying one item from the item's layout. View holders also add information that RecyclerView uses to efficiently move views around the screen.
 An adapter.
 The adapter connects your data to the RecyclerView. It adapts the data so that it can be displayed in a ViewHolder. A RecyclerView uses the adapter to figure out how to display the data on the screen.
+
+### ViewHolder
+- A ViewHolder describes an item view and metadata about its place within the RecyclerView. RecyclerView relies on this functionality to correctly position the view as the list scrolls, and to do interesting things like animate views when items are added or removed in the Adapter.
+- If RecyclerView does need to access the views stored in the ViewHolder, it can do so using the view holder's itemView property. RecyclerView uses itemView when it's binding an item to display on the screen, when drawing decorations around a view like a border, and for implementing accessibility.
+
+#### Summary
+- Displaying a list or grid of data is one of the most common UI tasks in Android. RecyclerView is designed to be efficient even when displaying extremely large lists.
+RecyclerView does only the work necessary to process or draw items that are currently visible on the screen.
+When an item scrolls off the screen, its views are recycled. That means the item is filled with new content that scrolls onto the screen.
+The adapter pattern in software engineering helps an object work together with another API. RecyclerView uses an adapter to transform app data into something it can display, without the need for changing how the app stores and processes data.
+
+- To display your data in a RecyclerView, you need the following parts:
+
+RecyclerView:
+To create an instance of RecyclerView, define a <RecyclerView> element in the layout file.
+LayoutManager:
+A RecyclerView uses a LayoutManager to organize the layout of the items in the RecyclerView, such as laying them out in a grid or in a linear list.
+
+In the <RecyclerView> in the layout file, set the app:layoutManager attribute to the layout manager (such as LinearLayoutManager or GridLayoutManager).
+
+You can also set the LayoutManager for a RecyclerView programmatically. (This technique is covered in a later codelab.)
+Layout for each item
+Create a layout for one item of data in an XML layout file.
+Adapter:
+Create an adapter that prepares the data and how it will be displayed in a ViewHolder. Associate the adapter with the RecyclerView.
+
+When RecyclerView runs, it will use the adapter to figure out how to display the data on the screen.
+
+The adapter requires you to implement the following methods:
+– getItemCount() to return the number of items.
+– onCreateViewHolder() to return the ViewHolder for an item in the list.
+– onBindViewHolder() to adapt the data to the views for an item in the list.
+
+ViewHolder:
+A ViewHolder contains the view information for displaying one item from the item's layout.
+The onBindViewHolder() method in the adapter adapts the data to the views. You always override this method. Typically, onBindViewHolder() inflates the layout for an item, and puts the data in the views in the layout.
+Because the RecyclerView knows nothing about the data, the Adapter needs to inform the RecyclerView when that data changes. Use notifyDataSetChanged()to notify the Adapter that the data has changed.
