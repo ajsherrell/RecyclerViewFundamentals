@@ -5,6 +5,7 @@
 - DataBinding
 - Binding Adapters
 - ListAdapter
+- LinearLayoutManager vs. GridLayoutManager
 
 ### RecyclerView
 - By default, RecyclerView only does work to process or draw items that are currently visible on the screen. For example, if your list has a thousand elements but only 10 elements are visible, RecyclerView does only enough work to draw 10 items on the screen. When the user scrolls, RecyclerView figures out what new items should be on the screen and does just enough work to display those items.

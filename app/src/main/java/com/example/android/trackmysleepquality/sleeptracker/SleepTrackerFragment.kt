@@ -25,6 +25,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.android.trackmysleepquality.R
 import com.example.android.trackmysleepquality.database.SleepDatabase
 import com.example.android.trackmysleepquality.databinding.FragmentSleepTrackerBinding
@@ -117,6 +118,13 @@ class SleepTrackerFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
+
+        //set the layout manager
+        //The GridLayoutManager constructor takes up to four arguments: a context, which is the activity, the number spans (columns, in the default vertical layout), an orientation (default is vertical), and whether it's a reverse layout (default is false).
+        val manager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
+
+        //tell the recyclerview: sleeplist to use this gridlayoutmanager
+        binding.sleepList.layoutManager = manager
 
         return binding.root
     }
